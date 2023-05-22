@@ -19,7 +19,7 @@ class Timer {
       minuteIncrement: 1,
       onClose: (selectedDates) => this.onClose(selectedDates),
       };
-  
+      this.startBtn.disabled = true;
       this.datapicker = flatpickr(this.calendar, this.options);
   
 };
@@ -28,11 +28,9 @@ class Timer {
 
   onClose(selectedDates) {
       if (selectedDates[0].getTime() < Date.now()){
-        this.startBtn.disabled = true;
         alert('Please choose a date in the future');
       } else {
-        this.startBtn.disabled = false;
-        
+        this.startBtn.disabled = false; 
         const timerStart=()=>{
                this.selectData = selectedDates[0].getTime();
                this.start()
